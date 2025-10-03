@@ -1,0 +1,5 @@
+{
+  "name": "Crime Investigation Dashboard",
+  "description": "A high-tech dashboard for monitoring active crime cases, evidence analysis, and suspect tracking, with a dark, procedural UI.",
+  "requestFramePermissions": []
+}
