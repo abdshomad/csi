@@ -1,6 +1,7 @@
 import React, { FC, useState, lazy, Suspense, ReactNode } from 'react';
 import { Page } from './types';
 import { LayoutIcon, GridIcon, TerminalIcon, WorkflowIcon, SettingsIcon, FingerprintIcon } from './components/Icons';
+import WelcomeScreen from './components/WelcomeScreen';
 
 // Lazy load pages for better initial load time
 const CaseDashboardPage = lazy(() => import('./pages/CaseDashboardPage'));
@@ -61,6 +62,7 @@ const AppSidebar: FC<{ currentPage: Page; setPage: (page: Page) => void }> = ({ 
 
 const App: FC = () => {
     const [page, setPage] = useState<Page>(Page.InvestigationDashboard);
+    const [showWelcome, setShowWelcome] = useState(true);
 
     const renderPage = () => {
         switch (page) {
@@ -76,6 +78,10 @@ const App: FC = () => {
                 return <InvestigationDashboardPage />;
         }
     };
+
+    if (showWelcome) {
+        return <WelcomeScreen onEnter={() => setShowWelcome(false)} />;
+    }
 
     return (
         <main className="w-screen h-screen bg-[#0A0A0A] text-[#E0E0E0] flex overflow-hidden">
